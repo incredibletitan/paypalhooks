@@ -13,5 +13,5 @@ $apiContext = new \PayPal\Rest\ApiContext(
 $output = \PayPal\Api\WebhookEventType::availableEventTypes($apiContext);
 
 echo "<pre>";
-print_r($output);
+erro_log($output);
 echo "</pre>";
