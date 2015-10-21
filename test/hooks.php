@@ -16,7 +16,7 @@ $bodyReceived = file_get_contents('php://input');
 // Call the validateReceivedEvent() method with provided body, and apiContext object to validate
 try {
     $output = \PayPal\Api\WebhookEvent::validateAndGetReceivedEvent($bodyReceived, $apiContext);
-    error_log(var_export('Supertest:' . $output, true));
+    error_log(var_export('Supertest:' . $bodyReceived, true));
 } catch (Exception $ex) {
 }
 
