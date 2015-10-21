@@ -10,8 +10,15 @@ $apiContext = new \PayPal\Rest\ApiContext(
     )
 );
 
-$output = \PayPal\Api\WebhookEventType::availableEventTypes($apiContext);
+$bodyReceived = file_get_contents('php://input');
 
-echo "<pre>";
-error_log($output);
-echo "</pre>";
+// ### Validate Received Event Method
+// Call the validateReceivedEvent() method with provided body, and apiContext object to validate
+try {
+    $output = \PayPal\Api\WebhookEvent::validateAndGetReceivedEvent($bodyReceived, $apiContext);
+    error_log(var_export($output, true));
+} catch (Exception $ex) {
+}
+
+
+
